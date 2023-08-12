@@ -1,0 +1,27 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Contract
+    network: optimism-goerli
+    source:
+      address: "0xFdEdFc08cfa325fC2479dAf28Ae7e3A326EEC20C"
+      abi: Contract
+      startBlock: 13203340
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - DropCreated
+        - EditionCreated
+      abis:
+        - name: Contract
+          file: ./abis/Contract.json
+      eventHandlers:
+        - event: DropCreated(address,address,address,uint64,string)
+          handler: handleDropCreated
+        - event: EditionCreated(address,address,address,uint64,string)
+          handler: handleEditionCreated
+      file: ./src/contract.ts
