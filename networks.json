@@ -1,8 +1,14 @@
 {
   "optimism-goerli": {
-    "Contract": {
+    "AtestamintV2": {
       "address": "0xFdEdFc08cfa325fC2479dAf28Ae7e3A326EEC20C",
-      "startBlock": 13203340
+      "startBlock": 13203330
+    },
+    "Vault": {
+      "address": "0xBfCda0baC2A7866D0a13DB211Fe6532F0fA2Cad4"
+    },
+    "ERC721Drop": {
+      "address": "0x61Cb091f8EC70029E393D31BA8F6D533c1308408"
     }
   }
 }

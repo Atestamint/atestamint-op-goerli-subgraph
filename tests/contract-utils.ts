@@ -1,6 +1,9 @@
-import { newMockEvent } from "matchstick-as"
-import { ethereum, Address, BigInt } from "@graphprotocol/graph-ts"
-import { DropCreated, EditionCreated } from "../generated/Contract/Contract"
+import { newMockEvent } from "matchstick-as";
+import { ethereum, Address, BigInt } from "@graphprotocol/graph-ts";
+import {
+  DropCreated,
+  EditionCreated,
+} from "../generated/AtestamintV2/AtestamintV2";
 
 export function createDropCreatedEvent(
   creator: Address,
@@ -9,39 +12,39 @@ export function createDropCreatedEvent(
   editionSize: BigInt,
   metadataContractURI: string
 ): DropCreated {
-  let dropCreatedEvent = changetype<DropCreated>(newMockEvent())
+  let dropCreatedEvent = changetype<DropCreated>(newMockEvent());
 
-  dropCreatedEvent.parameters = new Array()
+  dropCreatedEvent.parameters = new Array();
 
   dropCreatedEvent.parameters.push(
     new ethereum.EventParam("creator", ethereum.Value.fromAddress(creator))
-  )
+  );
   dropCreatedEvent.parameters.push(
     new ethereum.EventParam(
       "dropAddress",
       ethereum.Value.fromAddress(dropAddress)
     )
-  )
+  );
   dropCreatedEvent.parameters.push(
     new ethereum.EventParam(
       "vaultAddress",
       ethereum.Value.fromAddress(vaultAddress)
     )
-  )
+  );
   dropCreatedEvent.parameters.push(
     new ethereum.EventParam(
       "editionSize",
       ethereum.Value.fromUnsignedBigInt(editionSize)
     )
-  )
+  );
   dropCreatedEvent.parameters.push(
     new ethereum.EventParam(
       "metadataContractURI",
       ethereum.Value.fromString(metadataContractURI)
     )
-  )
+  );
 
-  return dropCreatedEvent
+  return dropCreatedEvent;
 }
 
 export function createEditionCreatedEvent(
@@ -51,37 +54,37 @@ export function createEditionCreatedEvent(
   editionSize: BigInt,
   metadataContractURI: string
 ): EditionCreated {
-  let editionCreatedEvent = changetype<EditionCreated>(newMockEvent())
+  let editionCreatedEvent = changetype<EditionCreated>(newMockEvent());
 
-  editionCreatedEvent.parameters = new Array()
+  editionCreatedEvent.parameters = new Array();
 
   editionCreatedEvent.parameters.push(
     new ethereum.EventParam("creator", ethereum.Value.fromAddress(creator))
-  )
+  );
   editionCreatedEvent.parameters.push(
     new ethereum.EventParam(
       "editionAddress",
       ethereum.Value.fromAddress(editionAddress)
     )
-  )
+  );
   editionCreatedEvent.parameters.push(
     new ethereum.EventParam(
       "vaultAddress",
       ethereum.Value.fromAddress(vaultAddress)
     )
-  )
+  );
   editionCreatedEvent.parameters.push(
     new ethereum.EventParam(
       "editionSize",
       ethereum.Value.fromUnsignedBigInt(editionSize)
     )
-  )
+  );
   editionCreatedEvent.parameters.push(
     new ethereum.EventParam(
       "metadataContractURI",
       ethereum.Value.fromString(metadataContractURI)
     )
-  )
+  );
 
-  return editionCreatedEvent
+  return editionCreatedEvent;
 }
