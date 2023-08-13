@@ -1,23 +1,23 @@
 type EditionCollection @entity {
   id: ID!
   creator: Bytes!
-  editionAddress: Bytes!
   editionSize: BigInt!
   imageURI: String!
-  vault: Vault!
   metadataContractURI: String!
   currentTokenId: Int!
+  editions: [EditionNFT!]
+  vault: Vault!
 }
 
 type DropCollection @entity {
   id: ID!
   creator: Bytes!
-  dropAddress: Bytes!
   editionSize: BigInt!
-  vault: Vault!
   metadataContractURI: String!
   metadataBaseURI: String!
   currentTokenId: Int!
+  drops: [DropNFT!]
+  vault: Vault!
 }
 
 type EditionNFT @entity {

@@ -23,7 +23,17 @@ export function handleSale(event: SaleEvent): void {
     editionNFT.editionAddress = event.address;
     editionNFT.owner = event.transaction.from;
     editionNFT.tokenId = BigInt.fromI32(edition.currentTokenId);
+    let tempEditions = edition.editions;
+    if (tempEditions == null) {
+      tempEditions = [];
+    }
+    let index = tempEditions.indexOf(editionNFT.id);
+    if (index == -1) {
+      tempEditions.push(editionNFT.id);
+    }
+    edition.editions = tempEditions;
     editionNFT.save();
+    edition.save();
   } else {
     let drop = new DropCollection(event.address.toHexString());
     if (drop) {
@@ -37,6 +47,16 @@ export function handleSale(event: SaleEvent): void {
       dropNFT.dropAddress = event.address;
       dropNFT.owner = event.transaction.from;
       dropNFT.tokenId = BigInt.fromI32(drop.currentTokenId);
+      let tempDrops = drop.drops;
+      if (tempDrops == null) {
+        tempDrops = [];
+      }
+      let index = tempDrops.indexOf(dropNFT.id);
+      if (index == -1) {
+        tempDrops.push(dropNFT.id);
+      }
+      drop.drops = tempDrops;
+      drop.save();
       dropNFT.save();
     }
   }

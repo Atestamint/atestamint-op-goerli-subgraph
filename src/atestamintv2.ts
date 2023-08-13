@@ -18,7 +18,7 @@ export function handleDropCreated(event: DropCreated): void {
   if (!drop) {
     drop = new DropCollection(event.params.dropAddress.toHexString());
     drop.creator = event.params.creator;
-    drop.dropAddress = event.params.dropAddress;
+    drop.drops = [];
     drop.editionSize = event.params.editionSize;
     drop.metadataContractURI = event.params.metadataContractURI;
     drop.currentTokenId = 0;
@@ -46,7 +46,7 @@ export function handleEditionCreated(event: EditionCreated): void {
 
   if (!edition) {
     edition = new EditionCollection(event.params.editionAddress.toHexString());
-    edition.editionAddress = event.params.editionAddress;
+    edition.editions = [];
     edition.editionSize = event.params.editionSize;
     edition.metadataContractURI = event.params.metadataContractURI;
     edition.creator = event.params.creator;

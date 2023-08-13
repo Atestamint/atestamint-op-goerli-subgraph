@@ -67,19 +67,6 @@ export class EditionCollection extends Entity {
     this.set("creator", Value.fromBytes(value));
   }
 
-  get editionAddress(): Bytes {
-    let value = this.get("editionAddress");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set editionAddress(value: Bytes) {
-    this.set("editionAddress", Value.fromBytes(value));
-  }
-
   get editionSize(): BigInt {
     let value = this.get("editionSize");
     if (!value || value.kind == ValueKind.NULL) {
@@ -106,19 +93,6 @@ export class EditionCollection extends Entity {
     this.set("imageURI", Value.fromString(value));
   }
 
-  get vault(): string {
-    let value = this.get("vault");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toString();
-    }
-  }
-
-  set vault(value: string) {
-    this.set("vault", Value.fromString(value));
-  }
-
   get metadataContractURI(): string {
     let value = this.get("metadataContractURI");
     if (!value || value.kind == ValueKind.NULL) {
@@ -143,6 +117,36 @@ export class EditionCollection extends Entity {
 
   set currentTokenId(value: i32) {
     this.set("currentTokenId", Value.fromI32(value));
+  }
+
+  get editions(): Array<string> | null {
+    let value = this.get("editions");
+    if (!value || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toStringArray();
+    }
+  }
+
+  set editions(value: Array<string> | null) {
+    if (!value) {
+      this.unset("editions");
+    } else {
+      this.set("editions", Value.fromStringArray(<Array<string>>value));
+    }
+  }
+
+  get vault(): string {
+    let value = this.get("vault");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toString();
+    }
+  }
+
+  set vault(value: string) {
+    this.set("vault", Value.fromString(value));
   }
 }
 
@@ -200,19 +204,6 @@ export class DropCollection extends Entity {
     this.set("creator", Value.fromBytes(value));
   }
 
-  get dropAddress(): Bytes {
-    let value = this.get("dropAddress");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set dropAddress(value: Bytes) {
-    this.set("dropAddress", Value.fromBytes(value));
-  }
-
   get editionSize(): BigInt {
     let value = this.get("editionSize");
     if (!value || value.kind == ValueKind.NULL) {
@@ -224,19 +215,6 @@ export class DropCollection extends Entity {
 
   set editionSize(value: BigInt) {
     this.set("editionSize", Value.fromBigInt(value));
-  }
-
-  get vault(): string {
-    let value = this.get("vault");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toString();
-    }
-  }
-
-  set vault(value: string) {
-    this.set("vault", Value.fromString(value));
   }
 
   get metadataContractURI(): string {
@@ -276,6 +254,36 @@ export class DropCollection extends Entity {
 
   set currentTokenId(value: i32) {
     this.set("currentTokenId", Value.fromI32(value));
+  }
+
+  get drops(): Array<string> | null {
+    let value = this.get("drops");
+    if (!value || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toStringArray();
+    }
+  }
+
+  set drops(value: Array<string> | null) {
+    if (!value) {
+      this.unset("drops");
+    } else {
+      this.set("drops", Value.fromStringArray(<Array<string>>value));
+    }
+  }
+
+  get vault(): string {
+    let value = this.get("vault");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toString();
+    }
+  }
+
+  set vault(value: string) {
+    this.set("vault", Value.fromString(value));
   }
 }
 
