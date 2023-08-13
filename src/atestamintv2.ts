@@ -22,7 +22,7 @@ export function handleDropCreated(event: DropCreated): void {
     drop.editionSize = event.params.editionSize;
     drop.vaultAddress = event.params.vaultAddress;
     drop.metadataContractURI = event.params.metadataContractURI;
-    drop.currentTokenId = BigInt.fromI32(0);
+    drop.currentTokenId = 0;
     drop.metadataBaseURI = event.params.metadataURIBase;
     drop.save();
     Vault.create(event.params.vaultAddress);
@@ -51,7 +51,7 @@ export function handleEditionCreated(event: EditionCreated): void {
     edition.metadataContractURI = event.params.metadataContractURI;
     edition.vaultAddress = event.params.vaultAddress;
     edition.creator = event.params.creator;
-    edition.currentTokenId = BigInt.fromI32(0);
+    edition.currentTokenId = 0;
     edition.imageURI = event.params.imageURI;
     edition.save();
     Vault.create(event.params.vaultAddress);

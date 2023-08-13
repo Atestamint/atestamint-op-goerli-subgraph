@@ -132,17 +132,17 @@ export class EditionCollection extends Entity {
     this.set("metadataContractURI", Value.fromString(value));
   }
 
-  get currentTokenId(): BigInt {
+  get currentTokenId(): i32 {
     let value = this.get("currentTokenId");
     if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
+      return 0;
     } else {
-      return value.toBigInt();
+      return value.toI32();
     }
   }
 
-  set currentTokenId(value: BigInt) {
-    this.set("currentTokenId", Value.fromBigInt(value));
+  set currentTokenId(value: i32) {
+    this.set("currentTokenId", Value.fromI32(value));
   }
 }
 
@@ -265,17 +265,17 @@ export class DropCollection extends Entity {
     this.set("metadataBaseURI", Value.fromString(value));
   }
 
-  get currentTokenId(): BigInt {
+  get currentTokenId(): i32 {
     let value = this.get("currentTokenId");
     if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
+      return 0;
     } else {
-      return value.toBigInt();
+      return value.toI32();
     }
   }
 
-  set currentTokenId(value: BigInt) {
-    this.set("currentTokenId", Value.fromBigInt(value));
+  set currentTokenId(value: i32) {
+    this.set("currentTokenId", Value.fromI32(value));
   }
 }
 
