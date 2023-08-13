@@ -4,7 +4,7 @@ type EditionCollection @entity {
   editionAddress: Bytes!
   editionSize: BigInt!
   imageURI: String!
-  vaultAddress: Bytes!
+  vault: Vault!
   metadataContractURI: String!
   currentTokenId: Int!
 }
@@ -14,7 +14,7 @@ type DropCollection @entity {
   creator: Bytes!
   dropAddress: Bytes!
   editionSize: BigInt!
-  vaultAddress: Bytes!
+  vault: Vault!
   metadataContractURI: String!
   metadataBaseURI: String!
   currentTokenId: Int!

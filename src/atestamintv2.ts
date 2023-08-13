@@ -20,7 +20,6 @@ export function handleDropCreated(event: DropCreated): void {
     drop.creator = event.params.creator;
     drop.dropAddress = event.params.dropAddress;
     drop.editionSize = event.params.editionSize;
-    drop.vaultAddress = event.params.vaultAddress;
     drop.metadataContractURI = event.params.metadataContractURI;
     drop.currentTokenId = 0;
     drop.metadataBaseURI = event.params.metadataURIBase;
@@ -35,6 +34,7 @@ export function handleDropCreated(event: DropCreated): void {
       vault.nftAddress = event.params.dropAddress;
       vault.positiveVotes = 0;
       vault.save();
+      drop.vault = vault.id;
     }
   }
 }
@@ -49,7 +49,6 @@ export function handleEditionCreated(event: EditionCreated): void {
     edition.editionAddress = event.params.editionAddress;
     edition.editionSize = event.params.editionSize;
     edition.metadataContractURI = event.params.metadataContractURI;
-    edition.vaultAddress = event.params.vaultAddress;
     edition.creator = event.params.creator;
     edition.currentTokenId = 0;
     edition.imageURI = event.params.imageURI;
@@ -64,6 +63,7 @@ export function handleEditionCreated(event: EditionCreated): void {
       vault.isUnlocked = false;
       vault.positiveVotes = 0;
       vault.save();
+      edition.vault = vault.id;
     }
   }
 }

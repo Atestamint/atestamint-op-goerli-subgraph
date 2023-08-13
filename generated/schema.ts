@@ -106,17 +106,17 @@ export class EditionCollection extends Entity {
     this.set("imageURI", Value.fromString(value));
   }
 
-  get vaultAddress(): Bytes {
-    let value = this.get("vaultAddress");
+  get vault(): string {
+    let value = this.get("vault");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
-      return value.toBytes();
+      return value.toString();
     }
   }
 
-  set vaultAddress(value: Bytes) {
-    this.set("vaultAddress", Value.fromBytes(value));
+  set vault(value: string) {
+    this.set("vault", Value.fromString(value));
   }
 
   get metadataContractURI(): string {
@@ -226,17 +226,17 @@ export class DropCollection extends Entity {
     this.set("editionSize", Value.fromBigInt(value));
   }
 
-  get vaultAddress(): Bytes {
-    let value = this.get("vaultAddress");
+  get vault(): string {
+    let value = this.get("vault");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
-      return value.toBytes();
+      return value.toString();
     }
   }
 
-  set vaultAddress(value: Bytes) {
-    this.set("vaultAddress", Value.fromBytes(value));
+  set vault(value: string) {
+    this.set("vault", Value.fromString(value));
   }
 
   get metadataContractURI(): string {
