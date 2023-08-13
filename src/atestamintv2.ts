@@ -33,7 +33,7 @@ export function handleDropCreated(event: DropCreated): void {
       vault.editionSize = event.params.editionSize;
       vault.isUnlocked = false;
       vault.nftAddress = event.params.dropAddress;
-      vault.positiveVotes = BigInt.fromI32(0);
+      vault.positiveVotes = 0;
       vault.save();
     }
   }
@@ -62,50 +62,8 @@ export function handleEditionCreated(event: EditionCreated): void {
       vault.editionSize = event.params.editionSize;
       vault.nftAddress = event.params.editionAddress;
       vault.isUnlocked = false;
-      vault.positiveVotes = BigInt.fromI32(0);
+      vault.positiveVotes = 0;
       vault.save();
     }
   }
 }
-
-// Entities only exist after they have been saved to the store;
-// `null` checks allow to create entities on demand
-// if (!entity) {
-//   entity = new ExampleEntity(event.transaction.from);
-
-//   // Entity fields can be set using simple assignments
-//   entity.count = BigInt.fromI32(0);
-// }
-
-// BigInt and BigDecimal math are supported
-// entity.count = entity.count + BigInt.fromI32(1);
-
-// // Entity fields can be set based on event parameters
-// entity.creator = event.params.creator;
-// entity.dropAddress = event.params.dropAddress;
-
-// // Entities can be written to the store with `.save()`
-// entity.save();
-
-// Note: If a handler doesn't require existing field values, it is faster
-// _not_ to load the entity from the store. Instead, create it fresh with
-// `new Entity(...)`, set the fields that should be updated and save the
-// entity back to the store. Fields that were not set or unset remain
-// unchanged, allowing for partial updates to be applied.
-
-// It is also possible to access smart contracts from mappings. For
-// example, the contract that has emitted the event can be connected to
-// with:
-//
-// let contract = Contract.bind(event.address)
-//
-// The following functions can then be called on this contract to access
-// state variables and other data:
-//
-// - contract.SETUP_VAULT_METHOD_ID(...)
-// - contract._deployProxy(...)
-// - contract.admin(...)
-// - contract.i_zoraNftFactory(...)
-// - contract.nonce(...)
-// - contract.schemaId(...)
-// - contract.vaultImplementation(...)

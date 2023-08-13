@@ -18,7 +18,7 @@ export function handleVoted(event: VotedEvent): void {
   let vault = new Vault(event.address.toHexString());
   if (vault) {
     if (event.params.isFor) {
-      vault.positiveVotes = vault.positiveVotes.plus(BigInt.fromI32(1));
+      vault.positiveVotes = vault.positiveVotes + 1;
     }
     vault.save();
   }

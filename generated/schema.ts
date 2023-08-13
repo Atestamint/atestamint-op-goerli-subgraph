@@ -502,17 +502,17 @@ export class Vault extends Entity {
     this.set("nftAddress", Value.fromBytes(value));
   }
 
-  get positiveVotes(): BigInt {
+  get positiveVotes(): i32 {
     let value = this.get("positiveVotes");
     if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
+      return 0;
     } else {
-      return value.toBigInt();
+      return value.toI32();
     }
   }
 
-  set positiveVotes(value: BigInt) {
-    this.set("positiveVotes", Value.fromBigInt(value));
+  set positiveVotes(value: i32) {
+    this.set("positiveVotes", Value.fromI32(value));
   }
 
   get isUnlocked(): boolean {

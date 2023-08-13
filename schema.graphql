@@ -38,6 +38,6 @@ type Vault @entity {
   id: ID!
   editionSize: BigInt!
   nftAddress: Bytes!
-  positiveVotes: BigInt!
+  positiveVotes: Int!
   isUnlocked: Boolean!
 }
