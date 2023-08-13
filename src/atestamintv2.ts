@@ -23,7 +23,6 @@ export function handleDropCreated(event: DropCreated): void {
     drop.metadataContractURI = event.params.metadataContractURI;
     drop.currentTokenId = 0;
     drop.metadataBaseURI = event.params.metadataURIBase;
-    drop.save();
     Vault.create(event.params.vaultAddress);
     ERC721Drop.create(event.params.dropAddress);
     let vault = VaultEntity.load(event.params.vaultAddress.toHexString());
@@ -35,6 +34,7 @@ export function handleDropCreated(event: DropCreated): void {
       vault.positiveVotes = 0;
       vault.save();
       drop.vault = vault.id;
+      drop.save();
     }
   }
 }
@@ -52,7 +52,6 @@ export function handleEditionCreated(event: EditionCreated): void {
     edition.creator = event.params.creator;
     edition.currentTokenId = 0;
     edition.imageURI = event.params.imageURI;
-    edition.save();
     Vault.create(event.params.vaultAddress);
     ERC721Drop.create(event.params.editionAddress);
     let vault = VaultEntity.load(event.params.vaultAddress.toHexString());
@@ -64,6 +63,7 @@ export function handleEditionCreated(event: EditionCreated): void {
       vault.positiveVotes = 0;
       vault.save();
       edition.vault = vault.id;
+      edition.save();
     }
   }
 }
